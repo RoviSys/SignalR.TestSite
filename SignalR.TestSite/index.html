@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <title>Tester</title>
+  <meta charset="utf-8" />
+</head>
+<body>
+
+  <script src="Scripts/jquery-1.10.2.js"></script>
+  <script src="Scripts/jquery.signalR-2.1.2.js"></script>
+  <script src="/signalr/hubs"></script>
+  <script>
+
+    $(function () {
+      $.connection.testerHub.client.hello = function(message) {
+        console.log(message);
+      }
+
+      $.connection.hub.start({logging:true},function() {
+        console.log('started');
+
+        $.connection.testerHub.server.hello();
+      });
+    });
+  </script>
+</body>
+</html>
